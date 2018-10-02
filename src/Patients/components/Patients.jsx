@@ -10,15 +10,15 @@ class Patients extends Component {
     }
   }
 
-    componentWillMount() {
-    axios.get('/patients')
-      .then(patients => {
-        this.setState({ patients: patients.data });
-      })
-      .catch(error => {
-        this.setState({ errors: error.response });
-      })
-  }
+  //   componentWillMount() {
+  //   axios.get('/patients')
+  //     .then(patients => {
+  //       this.setState({ patients: patients.data });
+  //     })
+  //     .catch(error => {
+  //       this.setState({ errors: error.response });
+  //     })
+  // }
 
 
   render() {

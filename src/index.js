@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-
+import axios from 'axios';
 // Styles
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootswatch/paper/bootstrap.css';

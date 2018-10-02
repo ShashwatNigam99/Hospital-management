@@ -40,27 +40,27 @@ class PatientForm extends Component {
     };
 
     this.setState({ loading: true });
-    axios.post('/patients', { patient: patientData })
-      .then(patient => {
-        this.setState({
-          patient,
-          errors: {},
-          hasError: false,
-          loading: false,
-          redirect: true,
-        })
-      })
-      .catch(error => {
-        this.setState({
-          patient: '',
-          errors: error.response,
-          hasError: true,
-          loading: false,
-          redirect: false,
-        })
+    // axios.post('/patients', { patient: patientData })
+    //   .then(patient => {
+    //     this.setState({
+    //       patient,
+    //       errors: {},
+    //       hasError: false,
+    //       loading: false,
+    //       redirect: true,
+    //     })
+    //   })
+    //   .catch(error => {
+    //     this.setState({
+    //       patient: '',
+    //       errors: error.response,
+    //       hasError: true,
+    //       loading: false,
+    //       redirect: false,
+    //     })
 
         console.log('state: ', this.state);
-      });
+    //  });
   }
 
   render() {
