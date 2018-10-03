@@ -6,19 +6,26 @@ class Patients extends Component {
     super();
     this.state = {
       patients: [],
-      errors: [],
     }
   }
 
-  //   componentWillMount() {
-  //   axios.get('/patients')
-  //     .then(patients => {
-  //       this.setState({ patients: patients.data });
-  //     })
-  //     .catch(error => {
-  //       this.setState({ errors: error.response });
-  //     })
-  // }
+  componentWillMount() {
+
+        const url = "http://localhost:3001/patients";
+
+        fetch(url)
+          .then(resp =>
+            {
+              if(resp.status==200)
+                  {
+                   resp.json().then(patients =>
+                        {
+                          this.setState({
+                              patients : patients
+                             })
+                       });
+              }});
+        }
 
 
   render() {
@@ -43,8 +50,6 @@ class Patients extends Component {
                   <th>Age</th>
                   <th>Gender</th>
                   <th>Fee Amount (In Rs.)</th>
-                  <th>Free?</th>
-                  <th>Action</th>
                 </tr>
 
                 { patients.map((patient, i) => <PatientList key={i} sn={i} patient={patient} />) }
@@ -62,12 +67,10 @@ function PatientList({...props}) {
     <tr>
       <td>{parseInt(props.sn) + 1}</td>
       <td>{props.patient.service_type}</td>
-
       <td>{props.patient.full_name}</td>
       <td>{props.patient.age}</td>
       <td>{props.patient.gender}</td>
       <td>{props.patient.fee_amount}</td>
-      <td>{props.patient.free}</td>
       <td>
       </td>
     </tr>

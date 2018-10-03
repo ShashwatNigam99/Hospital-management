@@ -8,10 +8,7 @@ class PatientForm extends Component {
     super();
 
     this.state = {
-      errors: {},
-      hasError: false,
-      loading: false,
-      patient: '',
+      patient: null,
       redirect: false,
     }
   }
@@ -20,48 +17,47 @@ class PatientForm extends Component {
     e.preventDefault();
 
     var {
-      first_name,
-      last_name,
+      full_name,
       age,
       gender,
-      address,
       service_type,
       fee_amount,
     } = this.form;
 
     const patientData = {
-      first_name: first_name.value,
-      last_name: last_name.value,
+      full_name: full_name.value,
       age: age.value,
       gender: gender.value,
-      address: address.value,
       service_type: service_type.value,
       fee_amount: fee_amount.value,
     };
 
-    this.setState({ loading: true });
-    // axios.post('/patients', { patient: patientData })
-    //   .then(patient => {
-    //     this.setState({
-    //       patient,
-    //       errors: {},
-    //       hasError: false,
-    //       loading: false,
-    //       redirect: true,
-    //     })
-    //   })
-    //   .catch(error => {
-    //     this.setState({
-    //       patient: '',
-    //       errors: error.response,
-    //       hasError: true,
-    //       loading: false,
-    //       redirect: false,
-    //     })
+    const url = "http://localhost:3001/patients";
 
-        console.log('state: ', this.state);
-    //  });
-  }
+    console.log(JSON.stringify(patientData));
+    fetch(url,{
+    method:'POST',
+    body: JSON.stringify(patientData),
+    headers: { 'Content-Type': 'application/json' }
+    })
+      .then(resp =>
+        {
+          if(resp.status>200 && resp.status<300)
+              {
+               resp.json().then(patient =>
+                    {
+                      console.log(patient)
+                      this.setState({
+                          patient: patient,
+                          redirect:true
+                         })
+                      window.alert("lol");
+                    });
+               }
+        });
+    }
+
+
 
   render() {
     const { redirect } = this.state;
@@ -82,64 +78,41 @@ class PatientForm extends Component {
                 ref={form => this.form = form}>
 
                 <SimpleInput
-                  title="First Name"
-                  name="first_name"
+                  title="Full_Name"
+                  name="full_name"
                   inputType="text"
-                  placeholder="First Name"
-                  hasError={this.state.hasError}
-                  errors={this.state.errors} />
-
-                <SimpleInput
-                  title="Last Name"
-                  name="last_name"
-                  inputType="text"
-                  placeholder="Last Name"
-                  hasError={this.state.hasError}
-                  errors={this.state.errors} />
+                  placeholder="Full Name"
+                   />
 
                 <SimpleInput
                   title="Age"
                   name="age"
                   inputType="number"
                   placeholder="Age"
-                  hasError={this.state.hasError}
-                  errors={this.state.errors} />
+                   />
 
                 <Select
                   name="gender"
                   title="Gender"
-                  options={['Male', 'Female']}
-                  hasError={this.state.hasError}
-                  errors={this.state.errors} />
+                  options={['M', 'F']}
+                   />
 
                 <Select
                   title="Service Type"
                   name="service_type"
                   options={['Normal', 'Emergency']}
-                  hasError={this.state.hasError}
-                  errors={this.state.errors} />
-
-                <TextArea
-                  title="Address"
-                  name="address"
-                  cols={30}
-                  rows={3}
-                  hasError={this.state.hasError}
-                  errors={this.state.errors} />
+                   />
 
                 <SimpleInput
                   inputType="number"
                   name="fee_amount"
                   title="Fee Amount"
-                  hasError={this.state.hasError}
-                  errors={this.state.errors} />
+                   />
 
 
                 <div className="form-group">
                   <input type="submit"
-                    value={this.state.loading ? 'Submitting Data...' : 'Create New Patient'}
-                    className="btn btn-default"
-                    disabled={this.state.loading}/>
+                    className="btn btn-default"/>
 
                   &nbsp;
                   <Link to="/patients" className="btn btn-warning">Go Back</Link>

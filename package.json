@@ -8,6 +8,7 @@
     "bootswatch": "^3.3.7",
     "classnames": "^2.2.5",
     "jquery": "^3.2.1",
+    "json-server": "^0.14.0",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

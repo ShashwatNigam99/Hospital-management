@@ -37,7 +37,7 @@ export function SimpleInput({...props}) {
 SimpleInput.defaultProps = {};
 
 SimpleInput.propTypes = {
-  inputType: PropTypes.oneOf(['text', 'number']).isRequired,
+  inputType: PropTypes.oneOf(['text', 'number','password']).isRequired,
   title: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,

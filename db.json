@@ -1,0 +1,32 @@
+{
+  "patients": [
+    {
+      "id": 1,
+      "full_name": "shashwat",
+      "age": 23,
+      "gender": "M",
+      "service_type": "Emergency",
+      "fee_amount": 2000
+    },
+    {
+      "full_name": "adhithya",
+      "age": 19,
+      "gender": "M",
+      "service_type": "Normal",
+      "fee_amount": 1290,
+      "id": 2
+    }
+  ],
+  "people": [
+    {
+      "id": 1,
+      "first_name": "shashwat",
+      "password": "lol"
+    },
+    {
+      "id": 2,
+      "first_name": "adhi",
+      "password": "lol"
+    }
+  ]
+}
