@@ -6,6 +6,8 @@ import Navbar from './Bootstrap/components/Navbar';
 import Patients from './Patients/components/Patients';
 import PatientForm from './Patients/components/PatientForm';
 import Dashboard from './Patients/components/Dashboard';
+import EditPatients from './Patients/components/EditPatients';
+
 
 import Login from './Patients/components/Login';
 // Styles
@@ -29,6 +31,8 @@ function Routes() {
           <Route exact path="/patients" component={Patients} />
           <Route path="/patients/new" component={PatientForm} />
           <Route path="/dashboard" component={Dashboard} />
+        <Route path="/edit" component={EditPatients} />
+
         </div>
       </div>
     </Router>

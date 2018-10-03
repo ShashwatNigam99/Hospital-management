@@ -34,7 +34,7 @@ render(){
         { !this.state.LoggedIn &&
           <NavLink to="/" className="navbar-brand">Hospital Frontdesk</NavLink>
         }
-        { this.state.LoggedIn &&
+        { this.state.LoggedIn!=null &&
           <NavLink to="/dashboard" className="navbar-brand">Hospital Frontdesk</NavLink>
         }
         </div>
@@ -45,7 +45,10 @@ render(){
             <li> <NavLink to="/patients/new" activeClassName="active">New Registration</NavLink></li>
             }
             {this.state.LoggedIn &&
-            <li> <NavLink to="/patients" activeClassName="active">Reports</NavLink></li>
+            <li> <NavLink to="/patients" activeClassName="active">View Reports</NavLink></li>
+            }
+            {this.state.LoggedIn &&
+            <li> <NavLink to="/edit" activeClassName="active">Edit Patients</NavLink></li>
             }
         </ul>
         </div>

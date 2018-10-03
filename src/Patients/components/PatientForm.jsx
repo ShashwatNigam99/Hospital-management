@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
-import axios from 'axios';
 import { SimpleInput, Select, TextArea } from './../../Bootstrap/components/Form';
 
 class PatientForm extends Component {
@@ -42,7 +41,7 @@ class PatientForm extends Component {
     })
       .then(resp =>
         {
-          if(resp.status>200 && resp.status<300)
+          if(resp.status>=200 && resp.status<=300)
               {
                resp.json().then(patient =>
                     {
@@ -51,7 +50,6 @@ class PatientForm extends Component {
                           patient: patient,
                           redirect:true
                          })
-                      window.alert("lol");
                     });
                }
         });

@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Reactable from 'reactable';
+
+var Table = Reactable.Table,
+    Thead = Reactable.Thead,
+    Th = Reactable.Th;
 
 class Patients extends Component {
+
   constructor() {
     super();
     this.state = {
@@ -10,9 +16,7 @@ class Patients extends Component {
   }
 
   componentWillMount() {
-
         const url = "http://localhost:3001/patients";
-
         fetch(url)
           .then(resp =>
             {
@@ -28,54 +32,36 @@ class Patients extends Component {
         }
 
 
-  render() {
-    const { patients } = this.state;
 
-    return (
-      <div className="panel panel-default">
-        <div className="panel-body">
-          <Link className="btn btn-success" to="/patients/new">
-            <span className="glyphicon glyphicon-plus"></span>
-            Add New Entry
-          </Link>
-          <br/>
+    renderTable()
+    {
+        const { patients } = this.state;
+        return (
+          <Table className="table"
+            itemsPerPage={5}
+            currentPage={0}
+            sortable={true}
+            data={patients}>
+            <Thead>
+              <Th column="full_name">Name</Th>
+              <Th column="age">Age</Th>
+              <Th column="gender">Sex</Th>
+              <Th column="service_type">Service Type</Th>
+              <Th column="fee_amount">Fee</Th>
+            </Thead>
+          </Table>
+        )
+    }
 
-          <div className="table-responsive">
-            <table className="table table-bordered table-striped">
-              <tbody>
-                <tr>
-                  <th>SN</th>
-                  <th>Service Type</th>
-                  <th>Name</th>
-                  <th>Age</th>
-                  <th>Gender</th>
-                  <th>Fee Amount (In Rs.)</th>
-                </tr>
-
-                { patients.map((patient, i) => <PatientList key={i} sn={i} patient={patient} />) }
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    )
+    render() {
+         return (
+           <div>
+             {this.renderTable()}
+           </div>
+         )
+      }
   }
-}
 
-function PatientList({...props}) {
-  return (
-    <tr>
-      <td>{parseInt(props.sn) + 1}</td>
-      <td>{props.patient.service_type}</td>
-      <td>{props.patient.full_name}</td>
-      <td>{props.patient.age}</td>
-      <td>{props.patient.gender}</td>
-      <td>{props.patient.fee_amount}</td>
-      <td>
-      </td>
-    </tr>
-  )
-}
 
 
 export default Patients;
