@@ -1,5 +1,6 @@
-# Hospital management application in React.js 
-Still under work.
+# Hospital management applicatio in React.js 
+Still under work.<br/>
+Bug : refresh page (`ctrl+R`) after login to refresh Navbar.
 ## Running instructions
 * Run `npm install` to install dependencies.
 * Run `json-server --watch db.json --port 3001` 
