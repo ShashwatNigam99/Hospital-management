@@ -7,6 +7,8 @@ import Patients from './Patients/components/Patients';
 import PatientForm from './Patients/components/PatientForm';
 import Dashboard from './Patients/components/Dashboard';
 import EditPatients from './Patients/components/EditPatients';
+import EditPatient from './Patients/components/EditPatient';
+
 
 
 import Login from './Patients/components/Login';
@@ -31,8 +33,8 @@ function Routes() {
           <Route exact path="/patients" component={Patients} />
           <Route path="/patients/new" component={PatientForm} />
           <Route path="/dashboard" component={Dashboard} />
-        <Route path="/edit" component={EditPatients} />
-
+          <Route path="/editpatients" component={EditPatients} />
+        <Route path="/editpatient/:id" component={EditPatient} />
         </div>
       </div>
     </Router>

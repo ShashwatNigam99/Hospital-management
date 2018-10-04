@@ -16,10 +16,11 @@ class EditPatients extends Component {
         fetch(url)
           .then(resp =>
             {
-              if(resp.status==200)
+              if(resp.status>=200 && resp.status<=400)
                   {
                    resp.json().then(patients =>
                         {
+                          console.log(patients)
                           this.setState({
                               patients : patients
                              })
@@ -72,8 +73,8 @@ function PatientList({...props}) {
       <td>{props.patient.age}</td>
       <td>{props.patient.gender}</td>
       <td>{props.patient.fee_amount}</td>
-    <td><Link className="btn btn-default" to="/dashboard">Edit</Link></td>
-  <td><Link className="btn btn-danger" to="/dashboard" onClick={() => {
+      <td><Link className="btn btn-default" to={"/editpatient/"+props.patient.id}>Edit</Link></td>
+      <td><Link className="btn btn-danger" to="/editpatients" onClick={() => {
     const url = "http://localhost:3001/patients/"+props.patient.id;
     fetch(url,{
       method:'DELETE'

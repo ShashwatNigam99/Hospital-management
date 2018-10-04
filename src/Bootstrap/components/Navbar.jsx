@@ -48,7 +48,7 @@ render(){
             <li> <NavLink to="/patients" activeClassName="active">View Reports</NavLink></li>
             }
             {this.state.LoggedIn &&
-            <li> <NavLink to="/edit" activeClassName="active">Edit Patients</NavLink></li>
+            <li> <NavLink to="/editpatients" activeClassName="active">Edit Patients</NavLink></li>
             }
         </ul>
         </div>

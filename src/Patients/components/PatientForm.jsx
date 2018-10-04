@@ -61,7 +61,7 @@ class PatientForm extends Component {
     const { redirect } = this.state;
 
     if(redirect) {
-      return <Redirect to="/patients" />
+      return <Redirect to="/editpatients" />
     }
 
     return (
@@ -113,7 +113,7 @@ class PatientForm extends Component {
                     className="btn btn-default"/>
 
                   &nbsp;
-                  <Link to="/patients" className="btn btn-warning">Go Back</Link>
+                  <Link to="/editpatients" className="btn btn-warning">Go Back</Link>
                 </div>
               </form>
             </div>
