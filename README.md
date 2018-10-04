@@ -1,4 +1,4 @@
-# Hospital management applicatio in React.js 
+# Hospital management application in React.js and json-server to serve API's
 Still under work.<br/>
 Bug : refresh page (`ctrl+R`) after login to refresh Navbar.
 ## Running instructions
